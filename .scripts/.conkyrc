@@ -1,0 +1,38 @@
+
+update_interval 1.0
+double_buffer yes
+gap_x 1550
+gap_y 535
+
+#own_window yes
+#own_window_type override
+#own_window_transparent yes
+#own_window_argb_value 100
+
+use_xft yes
+xftfont HandelGotD:size=9:bold=true
+#xftalpha 1.0
+
+lua_load ~/.conky/rings.lua 
+lua_draw_hook_pre main_rings
+
+TEXT
+CPU1: ${cpu cpu1}%
+CPU2: ${cpu cpu2}%
+CPU3: ${cpu cpu3}%
+CPU4: ${cpu cpu4}%
+
+${voffset 80}
+RAM: ${memperc}% 
+${mem}
+${memmax}
+
+${voffset 95}
+${image ~/.conky/download.png -p 1,315} ${offset 10} ${downspeed eth0}
+${image ~/.conky/upload.png -p 1,328} ${offset 10} ${upspeed eth0}
+
+${voffset 20}
+Disk activity:
+${image ~/.conky/download.png -p 1,413} ${offset 10} ${diskio_read /dev/sda}/s
+${image ~/.conky/upload.png -p 1,400} ${offset 10} ${diskio_write /dev/sda}/s
+

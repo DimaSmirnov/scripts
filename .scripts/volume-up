@@ -1,0 +1,5 @@
+#!/bin/bash
+
+A=`amixer sget Master | grep "Mono: Playback" | cut -d " " -f5`
+B=$((A+1))
+amixer sset Master $B
